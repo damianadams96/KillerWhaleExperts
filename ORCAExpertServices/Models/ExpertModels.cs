@@ -20,6 +20,11 @@ namespace ORCAExpertServices.Models
 
     }
 
+    public class Admin : ApplicationUser
+    {
+        public bool IsAnAdmin { get; set; }
+    }
+
     public class Expertise
     {
         [Key]
