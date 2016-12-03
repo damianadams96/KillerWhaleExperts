@@ -153,6 +153,12 @@ namespace ORCAExpertServices.Controllers
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
+
+                var FirstName = model.FirstName;
+
+                var LastName = model.LastName;
+
+
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
