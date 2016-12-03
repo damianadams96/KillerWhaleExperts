@@ -25,6 +25,7 @@ namespace ORCAExpertServices.Models
         public string ExpertID { get; set; }
 
         public virtual ApplicationUser ApplicationUser { get; set; }
+
         public virtual Expert Expert { get; set; }
 
         public virtual ICollection <Message> Message { get; set; }

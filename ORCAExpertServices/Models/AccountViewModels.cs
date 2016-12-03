@@ -87,6 +87,8 @@ namespace ORCAExpertServices.Models
 
         public string LastName { get; set; }
 
+        public bool deactivated { get; set; }
+
 
 
 

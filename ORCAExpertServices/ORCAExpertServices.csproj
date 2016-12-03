@@ -199,13 +199,13 @@
     <Compile Include="Controllers\ExpertsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MessageThreadsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\MessagingThreadModels.cs" />
-    <Compile Include="Models\User.cs" />
     <Compile Include="Models\ExpertModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -277,6 +277,11 @@
     <Content Include="Views\Experts\Details.cshtml" />
     <Content Include="Views\Experts\Edit.cshtml" />
     <Content Include="Views\Experts\Index.cshtml" />
+    <Content Include="Views\MessageThreads\Create.cshtml" />
+    <Content Include="Views\MessageThreads\Delete.cshtml" />
+    <Content Include="Views\MessageThreads\Details.cshtml" />
+    <Content Include="Views\MessageThreads\Edit.cshtml" />
+    <Content Include="Views\MessageThreads\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
