@@ -166,8 +166,8 @@ namespace ORCAExpertServices.Controllers
 
                     foreach (string Expertiese in ListOfExpertises)
                     {
-                        
-                        var nameExpertise = new Expertise { Expertises.nameOfExpertise;
+
+                        var nameExpertise = new Expertise { };
                     }
                 }
 
