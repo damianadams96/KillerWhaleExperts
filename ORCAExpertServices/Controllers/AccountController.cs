@@ -164,11 +164,11 @@ namespace ORCAExpertServices.Controllers
                 {
                     string[] ListOfExpertises = model.ListOfExpertieses.Split(',');
 
-                    foreach (string Expertiese in ListOfExpertises)
-                    {
-
-                        var nameExpertise = new Expertise { };
-                    }
+                    //foreach (string Expertiese in ListOfExpertises)
+                    //{
+                    //    if( Expertises.nameOfExpertise. )
+                    //    var nameExpertise = new Expertise { };
+                    //}
                 }
 
 
