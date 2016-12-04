@@ -4,6 +4,7 @@ namespace ORCAExpertServices.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using Microsoft.AspNet.Identity.EntityFramework;
 
     internal sealed class Configuration : DbMigrationsConfiguration<ORCAExpertServices.Models.ApplicationDbContext>
     {
@@ -26,6 +27,14 @@ namespace ORCAExpertServices.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+            context.Roles.AddOrUpdate(r => r.Name,
+                new IdentityRole { Name = "Admin" },
+                new IdentityRole { Name = "User" },
+                new IdentityRole { Name = "Expert" },
+                new IdentityRole { Name = "Candidate" }
+
+            );
         }
     }
 }
