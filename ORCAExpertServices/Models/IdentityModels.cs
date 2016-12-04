@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections.Generic;
 
 namespace ORCAExpertServices.Models
 {
@@ -14,6 +15,12 @@ namespace ORCAExpertServices.Models
         public string LastName { get; set; }
 
         public bool deactivated { get; set; }
+
+        public bool ValidatedExpert { get; set; }
+
+        public virtual ListExpertise ListExpertise { get; set; }
+
+        public virtual ICollection<MessageThread> MessageThread { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -36,10 +43,10 @@ namespace ORCAExpertServices.Models
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<ORCAExpertServices.Models.Expert> ApplicationUsers { get; set; }
-
         public System.Data.Entity.DbSet<ORCAExpertServices.Models.ListExpertise> ListExpertises { get; set; }
 
         public System.Data.Entity.DbSet<ORCAExpertServices.Models.MessageThread> MessageThreads { get; set; }
+
+        public System.Data.Entity.DbSet<ORCAExpertServices.Models.Expertise> Expertises { get; set; }
     }
 }

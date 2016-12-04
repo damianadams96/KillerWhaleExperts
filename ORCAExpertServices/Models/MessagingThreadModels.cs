@@ -19,14 +19,16 @@ namespace ORCAExpertServices.Models
         public string subject { get; set;}
 
         [ForeignKey("ApplicationUser")]
+        [Column (Order = 0)]
         public string UserID { get; set; }
 
-        [ForeignKey("Expert")]
+
+        [ForeignKey("ExpertUser")]
+        [Column (Order = 1)]
         public string ExpertID { get; set; }
 
         public virtual ApplicationUser ApplicationUser { get; set; }
-
-        public virtual Expert Expert { get; set; }
+        public virtual ApplicationUser ExpertUser { get; set; }
 
         public virtual ICollection <Message> Message { get; set; }
 

@@ -10,116 +10,107 @@ using ORCAExpertServices.Models;
 
 namespace ORCAExpertServices.Controllers
 {
-    public class MessageThreadsController : Controller
+    public class ExpertisesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: MessageThreads
+        // GET: Expertises
         public ActionResult Index()
         {
-            var messageThreads = db.MessageThreads.Include(m => m.ApplicationUser).Include(m => m.Expert);
-            return View(messageThreads.ToList());
+            return View(db.Expertises.ToList());
         }
 
-        // GET: MessageThreads/Details/5
+        // GET: Expertises/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MessageThread messageThread = db.MessageThreads.Find(id);
-            if (messageThread == null)
+            Expertise expertise = db.Expertises.Find(id);
+            if (expertise == null)
             {
                 return HttpNotFound();
             }
-            return View(messageThread);
+            return View(expertise);
         }
 
-        // GET: MessageThreads/Create
+        // GET: Expertises/Create
         public ActionResult Create()
         {
-            ViewBag.UserID = new SelectList(db.ApplicationUsers, "Id", "Email");
-            ViewBag.ExpertID = new SelectList(db.ApplicationUsers, "Id", "Email");
             return View();
         }
 
-        // POST: MessageThreads/Create
+        // POST: Expertises/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MessageThreadID,startDate,subject,UserID,ExpertID")] MessageThread messageThread)
+        public ActionResult Create([Bind(Include = "ExpertiseID,nameOfExpertise")] Expertise expertise)
         {
             if (ModelState.IsValid)
             {
-                db.MessageThreads.Add(messageThread);
+                db.Expertises.Add(expertise);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.UserID = new SelectList(db.ApplicationUsers, "Id", "Email", messageThread.UserID);
-            ViewBag.ExpertID = new SelectList(db.ApplicationUsers, "Id", "Email", messageThread.ExpertID);
-            return View(messageThread);
+            return View(expertise);
         }
 
-        // GET: MessageThreads/Edit/5
+        // GET: Expertises/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MessageThread messageThread = db.MessageThreads.Find(id);
-            if (messageThread == null)
+            Expertise expertise = db.Expertises.Find(id);
+            if (expertise == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.UserID = new SelectList(db.ApplicationUsers, "Id", "Email", messageThread.UserID);
-            ViewBag.ExpertID = new SelectList(db.ApplicationUsers, "Id", "Email", messageThread.ExpertID);
-            return View(messageThread);
+            return View(expertise);
         }
 
-        // POST: MessageThreads/Edit/5
+        // POST: Expertises/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MessageThreadID,startDate,subject,UserID,ExpertID")] MessageThread messageThread)
+        public ActionResult Edit([Bind(Include = "ExpertiseID,nameOfExpertise")] Expertise expertise)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(messageThread).State = EntityState.Modified;
+                db.Entry(expertise).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.UserID = new SelectList(db.ApplicationUsers, "Id", "Email", messageThread.UserID);
-            ViewBag.ExpertID = new SelectList(db.ApplicationUsers, "Id", "Email", messageThread.ExpertID);
-            return View(messageThread);
+            return View(expertise);
         }
 
-        // GET: MessageThreads/Delete/5
+        // GET: Expertises/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MessageThread messageThread = db.MessageThreads.Find(id);
-            if (messageThread == null)
+            Expertise expertise = db.Expertises.Find(id);
+            if (expertise == null)
             {
                 return HttpNotFound();
             }
-            return View(messageThread);
+            return View(expertise);
         }
 
-        // POST: MessageThreads/Delete/5
+        // POST: Expertises/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            MessageThread messageThread = db.MessageThreads.Find(id);
-            db.MessageThreads.Remove(messageThread);
+            Expertise expertise = db.Expertises.Find(id);
+            db.Expertises.Remove(expertise);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

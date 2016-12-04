@@ -78,6 +78,7 @@ namespace ORCAExpertServices.Models
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+
         public string ConfirmPassword { get; set; }
 
         public bool deactivated { get; set; }
@@ -85,6 +86,9 @@ namespace ORCAExpertServices.Models
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
+
+        [Display(Name = "Im An Expert")]
+        public bool wantsToBeAnExpert { get; set; }
 
 
     }

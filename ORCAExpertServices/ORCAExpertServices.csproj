@@ -196,10 +196,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\ExpertsController.cs" />
+    <Compile Include="Controllers\ExpertisesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\MessageThreadsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -272,16 +271,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Experts\Create.cshtml" />
-    <Content Include="Views\Experts\Delete.cshtml" />
-    <Content Include="Views\Experts\Details.cshtml" />
-    <Content Include="Views\Experts\Edit.cshtml" />
-    <Content Include="Views\Experts\Index.cshtml" />
-    <Content Include="Views\MessageThreads\Create.cshtml" />
-    <Content Include="Views\MessageThreads\Delete.cshtml" />
-    <Content Include="Views\MessageThreads\Details.cshtml" />
-    <Content Include="Views\MessageThreads\Edit.cshtml" />
-    <Content Include="Views\MessageThreads\Index.cshtml" />
+    <Content Include="Views\Expertises\Create.cshtml" />
+    <Content Include="Views\Expertises\Delete.cshtml" />
+    <Content Include="Views\Expertises\Details.cshtml" />
+    <Content Include="Views\Expertises\Edit.cshtml" />
+    <Content Include="Views\Expertises\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

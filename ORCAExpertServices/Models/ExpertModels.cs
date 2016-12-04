@@ -8,22 +8,6 @@ using System.Web;
 
 namespace ORCAExpertServices.Models
 {
-    public class Expert : ApplicationUser
-    {
-        public bool IsAnExpert { get; set; }
-
-        public bool Validated { get; set; }
-
-        public virtual ListExpertise ListExpertise { get; set; }
-
-        public virtual ICollection<MessageThread> MessageThread { get; set; }
-
-    }
-
-    public class Admin : ApplicationUser
-    {
-        public bool IsAnAdmin { get; set; }
-    }
 
     public class Expertise
     {
@@ -42,14 +26,14 @@ namespace ORCAExpertServices.Models
     {
 
         [Key]
-        [ForeignKey("Expert")]
+        [ForeignKey("ApplicationUser")]
         public string ExpertID { get; set; }
 
 
         [ForeignKey("Expertise")]
         public int ExpertiseID { get; set; }
 
-        public virtual Expert Expert { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
 
         public virtual ICollection<Expertise> Expertise { get; set; }
     }
