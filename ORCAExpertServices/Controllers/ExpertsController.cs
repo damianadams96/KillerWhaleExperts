@@ -10,6 +10,7 @@ using ORCAExpertServices.Models;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using System.Web.Security;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace ORCAExpertServices.Controllers
 {
@@ -51,11 +52,16 @@ namespace ORCAExpertServices.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Email,EmailConfirmed,PhoneNumber,PhoneNumberConfirmed,UserName,IsAnExpert,Validated")] Expert expert)
+        public ActionResult Create([Bind(Include = "Id,Email,PhoneNumber,UserName,IsAnExpert,Validated")] Expert expert)
         {
             if (ModelState.IsValid)
             {
-                //string user = Membership.GetUser().ProviderUserKey.ToString();
+                var manager = new UserManager<ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(new ApplicationDbContext()));
+                IdentityUser currentUser = manager.FindById(User.Identity.GetUserId());
+
+                manager.AddToRole(currentUser.Id, "Expert");
+                manager.RemoveFromRole(currentUser.Id, "User");
+
                 db.ApplicationUsers.Add(expert);
                 db.SaveChanges();
                 return RedirectToAction("Index");

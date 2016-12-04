@@ -158,6 +158,9 @@ namespace ORCAExpertServices.Controllers
 
                 var LastName = model.LastName;
 
+                var manager = new UserManager<ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(new ApplicationDbContext()));
+                var currentUser = manager.FindById(User.Identity.GetUserId());
+
 
 
                 if (result.Succeeded)
