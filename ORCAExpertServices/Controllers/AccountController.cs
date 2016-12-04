@@ -160,16 +160,25 @@ namespace ORCAExpertServices.Controllers
 
                 var deactivated = model.deactivated;
 
-                if (model.wantsToBeAnExpert)
-                {
-                    string[] ListOfExpertises = model.ListOfExpertieses.Split(',');
+                //if (model.wantsToBeAnExpert)
+                //{
+                //    string[] ListOfExpertises = model.ListOfExpertieses.Split(',');
 
-                    //foreach (string Expertiese in ListOfExpertises)
-                    //{
-                    //    if( Expertises.nameOfExpertise. )
-                    //    var nameExpertise = new Expertise { };
-                    //}
-                }
+                //    foreach (string Expertiese in ListOfExpertises)
+                //    {
+                //    //    ApplicationDbContext check = new ApplicationDbContext() ;
+
+                //    //    // Insert a code to check for pre-existing expertise 
+                //    //    if (check.Expertises.Find(Expertises.nameOfExpertise) )
+                //    //    { //if This expertise already exists
+                //    //        var Expertises = new Expertise { }; //add this user to list of expertise owners
+                //    //} 
+                //    //    else
+                //    //    {
+                //    //        //creat new expertise and add this user to its list of owners
+                //    //    }
+                //    //}
+                //}
 
 
 
