@@ -147,8 +147,9 @@ namespace ORCAExpertServices.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model, Expertise Expertises, ListExpertise ExpertiseList)
+        public async Task<ActionResult> Register(RegisterViewModel model, Expertise Expertises)
         {
+
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
@@ -160,25 +161,42 @@ namespace ORCAExpertServices.Controllers
 
                 var deactivated = model.deactivated;
 
-                //if (model.wantsToBeAnExpert)
-                //{
-                //    string[] ListOfExpertises = model.ListOfExpertieses.Split(',');
+                if (model.wantsToBeAnExpert)
+                {
+                    string[] SeperatedListExpertises = model.ListOfExpertises.Split(',');
 
-                //    foreach (string Expertiese in ListOfExpertises)
-                //    {
-                //    //    ApplicationDbContext check = new ApplicationDbContext() ;
 
-                //    //    // Insert a code to check for pre-existing expertise 
-                //    //    if (check.Expertises.Find(Expertises.nameOfExpertise) )
-                //    //    { //if This expertise already exists
-                //    //        var Expertises = new Expertise { }; //add this user to list of expertise owners
-                //    //} 
-                //    //    else
-                //    //    {
-                //    //        //creat new expertise and add this user to its list of owners
-                //    //    }
-                //    //}
-                //}
+
+                        ApplicationDbContext check = new ApplicationDbContext();
+                        var damian = from s in check.Expertises
+                            select s;
+
+                        damian = damian.Where(s => s.nameOfExpertise.Contains(model.ListOfExpertises));
+
+
+                        if ( damian.Equals(""))
+                        { 
+                            foreach( string T in SeperatedListExpertises)
+                            {
+                            Expertise newExpertise = new Expertise();
+                            newExpertise.nameOfExpertise = T;
+
+                            var manager = new UserManager<ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(new ApplicationDbContext()));
+                            var currentUser = manager.FindById(User.Identity.GetUserId());
+
+                            newExpertise.ExpertID = user.Id;
+
+                        }
+                        }
+                        else
+                        {
+                          foreach( string T in SeperatedListExpertises)
+                        {
+                           
+                        }
+                        }
+                    
+                }
 
 
 
@@ -188,9 +206,6 @@ namespace ORCAExpertServices.Controllers
                 if (result.Succeeded)
                 {
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-
-                        var manager = new UserManager<ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(new ApplicationDbContext()));
-                        var currentUser = manager.FindById(User.Identity.GetUserId());
 
                         UserManager.AddToRole(user.Id, "User");
 

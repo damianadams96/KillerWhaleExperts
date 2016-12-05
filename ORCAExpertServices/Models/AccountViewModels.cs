@@ -90,7 +90,7 @@ namespace ORCAExpertServices.Models
         [Display(Name = "Im An Expert")]
         public bool wantsToBeAnExpert { get; set; }
 
-        public string ListOfExpertieses { get; set; }
+        public string ListOfExpertises { get; set; }
 
 
     }
