@@ -18,7 +18,7 @@ namespace ORCAExpertServices.Models
 
         public bool ValidatedExpert { get; set; }
 
-        public virtual ListExpertise ListExpertise { get; set; }
+        public virtual ICollection<Expertise> ListExpertise { get; set; }
 
         public virtual ICollection<MessageThread> MessageThread { get; set; }
 
@@ -42,8 +42,6 @@ namespace ORCAExpertServices.Models
         {
             return new ApplicationDbContext();
         }
-
-        public System.Data.Entity.DbSet<ORCAExpertServices.Models.ListExpertise> ListExpertises { get; set; }
 
         public System.Data.Entity.DbSet<ORCAExpertServices.Models.MessageThread> MessageThreads { get; set; }
 

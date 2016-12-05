@@ -16,25 +16,15 @@ namespace ORCAExpertServices.Models
 
         public string nameOfExpertise { get; set; }
 
-        public virtual ICollection<ListExpertise> ListExpertise { get; set; }
-
-
-
-    }
-
-    public class ListExpertise
-    {
-
-        [Key]
-        [ForeignKey("ApplicationUser")]
+        [ForeignKey ("Expert")]
         public string ExpertID { get; set; }
 
 
-        [ForeignKey("Expertise")]
-        public int ExpertiseID { get; set; }
+        public virtual ICollection<ApplicationUser> Expert { get; set; }
 
-        public virtual ApplicationUser ApplicationUser { get; set; }
 
-        public virtual ICollection<Expertise> Expertise { get; set; }
+
     }
+
+
 }
