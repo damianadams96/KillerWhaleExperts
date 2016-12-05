@@ -50,6 +50,16 @@
         </div>
     </div>
 
+    <div class="form-group">
+        <p> Please enter you expetises in a list, seperated by commas with no quotes</p>
+        <p> Ex: "Computer Science,Liberal Arts,Engineering"</p>
+    @Html.LabelFor(m => m.ListOfExpertises, new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        @Html.TextBoxFor(m => m.ListOfExpertises, new { @class = "form-control" })
+    </div>
+    </div>
+
+
 
 
 
