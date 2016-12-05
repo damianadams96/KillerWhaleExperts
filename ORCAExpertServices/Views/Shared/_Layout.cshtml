@@ -17,7 +17,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+                <a href="/Home/Home" class="navbar-brand">
+                    <img src="http://www.marshall.edu/home/img/main/mu_logo_blk.png" alt="MU logo" width="135" height="35" />
+                </a>
+
+                @Html.ActionLink("ORCA", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -33,7 +38,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - ORCA Project</p>
         </footer>
     </div>
 
